@@ -1,24 +1,16 @@
 {
   "name": "pastebinapp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Pastebin-like backend service",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/varshini-1904/pastebinapp.git"
+    "start": "node server.js"
   },
   "author": "varshini",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/varshini-1904/pastebinapp/issues"
-  },
-  "homepage": "https://github.com/varshini-1904/pastebinapp#readme",
   "dependencies": {
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "mongoose": "^9.1.0"
+    "express": "^4.19.2",
+    "mongoose": "^7.6.3",
+    "dotenv": "^16.4.5"
   }
 }
