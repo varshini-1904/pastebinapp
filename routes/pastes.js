@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const crypto = require("crypto");
-const Paste = require("../models/paste");
+const Paste = require("../models/Paste");
 const { connectDB } = require("../db");
 const { getNow } = require("../utils/time");
 
@@ -34,6 +34,32 @@ router.post("/api/pastes", async (req, res) => {
   res.status(201).json({
     id,
     url: `${req.protocol}://${req.get("host")}/p/${id}`
+  });
+});
+
+router.get("/api/pastes/:id", async (req, res) => {
+  await connectDB();
+
+  const paste = await Paste.findOne({ id: req.params.id });
+  if (!paste) return res.sendStatus(404);
+
+  const now = getNow(req);
+
+  if (paste.expires_at && now > paste.expires_at.getTime())
+    return res.sendStatus(404);
+
+  if (paste.remaining_views === 0)
+    return res.sendStatus(404);
+
+  if (paste.remaining_views !== null) {
+    paste.remaining_views -= 1;
+    await paste.save();
+  }
+
+  res.json({
+    content: paste.content,
+    remaining_views: paste.remaining_views,
+    expires_at: paste.expires_at
   });
 });
 
