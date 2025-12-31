@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "18.x"
+  },
   "name": "pastebinapp",
   "version": "1.0.0",
   "description": "Pastebin-like backend service",
