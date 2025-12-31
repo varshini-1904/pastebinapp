@@ -1,16 +1,10 @@
 {
+  "name": "pastebinapp",
+  "version": "1.0.0",
+  "type": "commonjs",
   "engines": {
     "node": "18.x"
   },
-  "name": "pastebinapp",
-  "version": "1.0.0",
-  "description": "Pastebin-like backend service",
-  "type": "commonjs",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "author": "varshini",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
     "mongoose": "^7.6.3",
