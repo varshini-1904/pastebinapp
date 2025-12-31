@@ -11,6 +11,11 @@ async function init() {
 }
 
 module.exports = async (req, res) => {
-  await init();
-  return app(req, res);
+  try {
+    await init();
+    return app(req, res);
+  } catch (err) {
+    console.error("INIT ERROR:", err);
+    res.status(500).json({ error: "Server init failed" });
+  }
 };
