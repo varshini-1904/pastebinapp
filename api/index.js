@@ -1,4 +1,4 @@
-const app = require("../src/app");
+const app = require("../app");
 const { connectDB } = require("../db");
 
 let isReady = false;
